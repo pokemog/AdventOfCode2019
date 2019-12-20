@@ -21,29 +21,37 @@ namespace day02
 
             for (int i = 0; i < splitProgram.Length; i += 4)
             {
-                Console.WriteLine($"This index ({i}) has operation {splitProgram[i]}");
-                switch (splitProgram[i])
+                var isNum = int.TryParse(splitProgram[i], out int operation);
+                
+                if (isNum) 
                 {
-                    case "1":
-                    // read value from position i + 1
-                    // read value from position i + 2
-                    // add those two positions together
-                    // store value from in position i + 3 with result
-                        break;
-                    case "2":
-                    // read value from position i + 1
-                    // read value from position i + 2
-                    // add those two positions together
-                    // store value from in position i + 3 with result
-                        break;
-                    case "99":
-                    // end of program, stop
-                        Console.WriteLine("End of Program command seen");
-                        computedProgram = String.Join(",", splitProgram);
-                        return computedProgram;
-                    default:
-                        break;
+                    switch (operation)
+                    {
+                        case 1:
+                            // read value from position i + 1
+                            
+                            // read value from position i + 2
+                            // add those two positions together
+                            // store value from in position i + 3 with result
+                            break;
+                        case 2:
+                            // read value from position i + 1
+                            // read value from position i + 2
+                            // add those two positions together
+                            // store value from in position i + 3 with result
+                            break;
+                        case 99:
+                            // end of program, stop
+                            Console.WriteLine("End of Program command seen");
+                            computedProgram = String.Join(",", splitProgram);
+                            return computedProgram;
+                        default:
+                            Console.WriteLine("Unknown operation, stopping program");
+                            return splitProgram.ToString();                            
+                    }
+
                 }
+                
             }
 
             Console.WriteLine("Did not see end of program command");
